@@ -13,6 +13,7 @@ public class Customer {
   private String phone;
   private String email;
   private String user;
+  private int colorId;
   
   public Customer() { }
 
@@ -72,6 +73,14 @@ public class Customer {
     this.user = user;
   }
 
+  public int getColorId() {
+    return colorId;
+  }
+
+  public void setColorId(int colorId) {
+    this.colorId = colorId;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -97,11 +106,4 @@ public class Customer {
     return true;
   }
 
-  @Override
-  public String toString() {
-    return "Customer [email=" + email + ", firstName=" + firstName + ", id=" + id + ", name=" + name + ", phone="
-        + phone + ", user=" + user + "]";
-  }
-
-  
 }

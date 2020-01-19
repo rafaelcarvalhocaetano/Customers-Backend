@@ -1,6 +1,7 @@
 package com.customers.service;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import com.customers.exceptions.CustomerException;
 import com.customers.model.Customer;
@@ -31,6 +32,11 @@ public class CustomerService {
   }
 
   public Customer create(Customer customer) throws CustomerException {
+		if (customer.getUser().equalsIgnoreCase("lead")) {
+			customer.setColorId(1);
+		} else {
+			customer.setColorId(2);
+		}
     return repository.save(customer);
 	}
 	
@@ -38,6 +44,11 @@ public class CustomerService {
 		Optional<Customer> cOptional = repository.findById(customer.getId());
 		if (!cOptional.isPresent()) {
 			throw new CustomerException("Customer not found in Customer Repository");
+		}
+		if (customer.getUser().equalsIgnoreCase("lead")) {
+			customer.setColorId(1);
+		} else {
+			customer.setColorId(2);
 		}
 		return repository.save(customer);
 	}
